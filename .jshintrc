@@ -1,0 +1,23 @@
+{
+    "browser"       : true,
+    "devel"         : true,
+    "node"          : true,
+    "jquery"        : true,
+    "curly"         : true,
+    "expr"          : true,
+    "globalstrict"  : true,
+    "trailing"      : true,
+    "camelcase"     : true,
+    "unused"        : false,
+    "indent"        : 4,
+    "globals": {
+        "it"            : true,
+        "xit"           : true,
+        "describe"      : true,
+        "xdescribe"     : true,
+        "beforeEach"    : true,
+        "afterEach"     : true,
+        "expect"        : true,
+        "spyOn"         : true
+    }
+}

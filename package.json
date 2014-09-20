@@ -1,0 +1,30 @@
+{
+  "name": "node-fileuploader",
+  "version": "0.0.0",
+  "description": "File uploader with Node.js and Socket.io progress bar.",
+  "homepage": "https://github.com/martinjezek/node-fileuploader",
+  "keywords": [],
+  "author": {
+    "name": "Martin Jezek",
+    "email": "info@martin-jezek.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:martinjezek/node-fileuploader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martinjezek/node-fileuploader/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.githubusercontent.com/martinjezek/node-fileuploader/master/LICENSE"
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  },
+  "license": "MIT",
+  "private": true
+}
