@@ -3,12 +3,14 @@
 var parse = require('url').parse;
 var join = require('path').join;
 var fs = require('fs');
+var path = require('path');
+var mime = require('mime');
 
 var streamFile = function(req, res, root) {
     var url = parse(req.url);
-    var path = getPublicUrl(root, url.pathname, 'index.html');
+    var filePath = getPublicUrl(root, url.pathname, 'index.html');
 
-    fs.stat(path, function (err, stat) {
+    fs.stat(filePath, function (err, stat) {
         if (err) {
             if (err.code == 'ENOENT') {
                 showError(res, 404, 'File not Found');
@@ -16,7 +18,10 @@ var streamFile = function(req, res, root) {
                 showError(res, 500, 'Internal Server Error');
             }
         } else {
-            var stream = fs.createReadStream(path);
+            // set correct MIME type header
+            res.setHeader('Content-Type', mime.lookup(path.basename(filePath)) + '; charset="utf-8"');
+            // stream the file
+            var stream = fs.createReadStream(filePath);
             stream.pipe(res);
             stream.on('error', function (err) {
                 showError(res, 500, 'Internal Server Error');
@@ -25,11 +30,11 @@ var streamFile = function(req, res, root) {
     });
 };
 
-var getPublicUrl = function(root, path, defaultPath) {
-    if (path === '/') {
-        path += defaultPath;
+var getPublicUrl = function(root, filePath, defaultFilePath) {
+    if (filePath === '/') {
+        filePath += defaultFilePath;
     }
-    var publicPath = join(root, '/public/' + path.replace(/\.\.\//g, ''));
+    var publicPath = join(root, '/public/' + filePath.replace(/\.\.\//g, ''));
 
     return publicPath;
 };

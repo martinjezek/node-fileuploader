@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "formidable": "^1.0.15",
+    "mime": "^1.2.11",
     "socket.io": "^1.1.0"
   },
-  "license": "MIT",
   "private": true
 }
