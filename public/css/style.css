@@ -1,0 +1,14 @@
+.well p.last,
+.well pre.last {
+    margin-bottom: 0px;
+}
+
+.jumbotron {
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+}

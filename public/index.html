@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Demo &middot; Node.js - File Uploader</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Node.js <small> File Uploader</small></h1>
+            </div>
+            <div class="well">
+                <p class="last">File Uploader with Node.js and Socket.io progress bar.</p>
+            </div>
+            <div class="jumbotron">
+                <form role="form" method="post" action="/" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter file name">
+                    </div>
+                    <div class="form-group">
+                        <label for="file">File</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-default">Upload</button>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
