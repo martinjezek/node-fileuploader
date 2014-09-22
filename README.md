@@ -1,4 +1,7 @@
-# node-fileuploader [![Build Status](https://travis-ci.org/martinjezek/node-fileuploader.svg?branch=master)](https://travis-ci.org/martinjezek/node-fileuploader) [![Dependencies Status](https://david-dm.org/martinjezek/node-fileuploader.svg)](https://david-dm.org/martinjezek/node-fileuploader#info=dependencies&view=table) [![devDependencies Status](https://david-dm.org/martinjezek/node-fileuploader/dev-status.svg)](https://david-dm.org/martinjezek/node-fileuploader#info=devDependencies&view=table) 
+# node-fileuploader
+[![Build Status](https://travis-ci.org/martinjezek/node-fileuploader.svg?branch=master)](https://travis-ci.org/martinjezek/node-fileuploader)
+[![Dependencies Status](https://david-dm.org/martinjezek/node-fileuploader.svg)](https://david-dm.org/martinjezek/node-fileuploader#info=dependencies&view=table)
+[![devDependencies Status](https://david-dm.org/martinjezek/node-fileuploader/dev-status.svg)](https://david-dm.org/martinjezek/node-fileuploader#info=devDependencies)
 
 > File uploader with Node.js and Socket.io progress bar.
 
