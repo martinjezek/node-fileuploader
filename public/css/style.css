@@ -12,3 +12,28 @@ h2 {
     font-size: 20px;
     margin: 0px 0px 10px 0px;
 }
+
+#upload-list {
+    padding-top: 20px;
+}
+
+#upload-list .img-thumbnail {
+    width: 200px;
+    margin: 0px 15px 15px 0px;
+    text-align: center;
+}
+
+#upload-list .img-thumbnail img {
+    width: 100%;
+}
+
+#upload-list .img-thumbnail .file {
+    height: 107px;
+    font-size: 57px;
+    line-height: 120px;
+}
+
+#upload-list .img-thumbnail p {
+    font-size: 16px;
+    margin-bottom: 0px;
+}

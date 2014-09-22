@@ -3,34 +3,9 @@
 var root = __dirname;
 
 var http = require('http');
-var formidable = require('formidable');
-var socketio = require('socket.io');
-
+var fs = require('fs');
 var fileserver = require('./app/fileserver.js');
-
-var upload = function(req, res) {
-    if (isFormData(req)) {
-        var form = new formidable.IncomingForm();
-
-        form.on('progress', function(bytesRecieved, bytesExpected) {
-            var percent = Math.floor(bytesRecieved / bytesExpected * 100);
-            console.log(percent);
-        });
-
-        form.parse(req, function(err, fields, files) {
-            console.log(fields);
-            console.log(files);
-            res.end('Upload Complete');
-        });
-    } else {
-        fileserver.showError(res, 400, 'Bad Request: expecting multipart/form-data');
-    }
-};
-
-var isFormData = function(req) {
-    var type = req.headers['content-type'] || '';
-    return 0 === type.indexOf('multipart/form-data');
-};
+var fileuploader = require('./app/fileuploader.js');
 
 var server = http.createServer(function (req, res) {
     switch (req.method) {
@@ -38,7 +13,26 @@ var server = http.createServer(function (req, res) {
             fileserver.streamFile(req, res, root);
             break;
         case 'POST':
-            upload(req, res);
+            fileuploader.upload(req, res, function(fields, files) {
+                res.setHeader('Content-Type', 'application/json; charset="utf-8"');
+                if (files.file.size > 0) {
+                    if (fields.name !== undefined && fields.name !== '') {
+                        var extension = files.file.name.match(/.*\.(.*)$/);
+                        files.file.name = fields.name + '.' + extension[1];
+                    }
+                    var publicPath = '/upload/' + files.file.name;
+                    var newPath = root + '/public' + publicPath;
+                    // move file to a new path
+                    fs.rename(files.file.path, newPath);
+                    // return file info as a response
+                    files.file.path = publicPath;
+                    res.end(JSON.stringify(files.file));
+                } else {
+                    res.end(JSON.stringify({
+                        path: null
+                    }));
+                }
+            });
             break;
     }
 
