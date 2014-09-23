@@ -1,6 +1,7 @@
 'use strict';
 
 var root = __dirname;
+var port = (process.env.USER == 'root' ? 80 : 3000);
 
 var http = require('http');
 var fs = require('fs');
@@ -36,6 +37,6 @@ var server = http.createServer(function (req, res) {
             break;
     }
 
-}).listen(3000, '127.0.0.1');
+}).listen(port);
 
-console.log('Server running at http://127.0.0.1:3000/');
+console.log('Server running at http://127.0.0.1:' + port + '/');
