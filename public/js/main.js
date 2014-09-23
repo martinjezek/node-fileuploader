@@ -1,7 +1,11 @@
 'use strict';
 
 var $uploadList = $('#upload-list');
-var uploadItemTemplate = Handlebars.compile($('#uploadItem').html());
+var $progressbar = $('#progress-bar');
+var uploadItemTemplate = Handlebars.compile($('#uploadItemTemplate').html());
+var progressbarTemplate = Handlebars.compile($('#progressbarTemplate').html());
+
+var socket = io();
 
 $('form').on('submit', function() {
     $.ajax({
@@ -12,6 +16,10 @@ $('form').on('submit', function() {
         processData: false,
         contentType: false,
         cache: false,
+        beforeSend: function() {
+            $progressbar.html(progressbarTemplate(0));
+            $progressbar.addClass('active');
+        },
         success: function(file) {
             if (file.path !== null) {
                 // render uploaded item
@@ -21,6 +29,7 @@ $('form').on('submit', function() {
                 $('#name').val('');
                 $('#file').val('');
             }
+            // $progressbar.removeClass('active');
         }
     });
     return false;

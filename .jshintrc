@@ -19,6 +19,7 @@
         "afterEach"     : true,
         "expect"        : true,
         "spyOn"         : true,
-        "Handlebars"    : true
+        "Handlebars"    : true,
+        "io"            : true
     }
 }

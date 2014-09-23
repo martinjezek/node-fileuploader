@@ -25,8 +25,11 @@
                     </div>
                     <div class="form-group">
                         <label for="file" class="col-sm-1 control-label">File</label>
-                        <div class="col-sm-11">
+                        <div class="col-sm-5">
                             <input type="file" id="file" name="file">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="progress" id="progress-bar"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -39,7 +42,7 @@
             </div>
         </div>
 
-        <script id="uploadItem" type="text/x-handlebars-template">
+        <script id="uploadItemTemplate" type="text/x-handlebars-template">
             <div class="img-thumbnail">
                 {{#ifCond type '===' 'image/jpeg'}}
                     <img src="{{path}}" alt="{{name}}">
@@ -50,9 +53,14 @@
             </div>
         </script>
 
+        <script id="progressbarTemplate" type="text/x-handlebars-template">
+            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{this}}%">{{this}}%</div>
+        </script>
+
         <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/bower_components/handlebars/handlebars.min.js"></script>
+        <script type="text/javascript" src="/bower_components/socket.io-client/socket.io.js"></script>
         <script type="text/javascript" src="/js/handlebars.helpers.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
     </body>
