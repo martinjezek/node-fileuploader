@@ -1,6 +1,6 @@
 {
   "name": "node-fileuploader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "File uploader with Node.js and Socket.io progress bar.",
   "homepage": "https://github.com/martinjezek/node-fileuploader",
   "keywords": [],
