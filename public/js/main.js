@@ -5,7 +5,11 @@ var $progressbar = $('#progress-bar');
 var uploadItemTemplate = Handlebars.compile($('#uploadItemTemplate').html());
 var progressbarTemplate = Handlebars.compile($('#progressbarTemplate').html());
 
-var socket = io();
+var socket = io.connect();
+
+socket.on('aaa', function(data) {
+    console.log('foo', data);
+});
 
 $('form').on('submit', function() {
     $.ajax({

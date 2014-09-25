@@ -8,13 +8,6 @@ var fs = require('fs');
 var fileserver = require('./app/fileserver.js');
 var fileuploader = require('./app/fileuploader.js');
 
-var io = require('socket.io')(http);
-
-io.on('connection', function(socket){
-    console.log('a user connected');
-});
-
-
 var server = http.createServer(function (req, res) {
     switch (req.method) {
         case 'GET':
@@ -44,6 +37,14 @@ var server = http.createServer(function (req, res) {
             break;
     }
 
-}).listen(port);
+});
+
+var io = require('socket.io').listen(server);
+
+io.on('connection', function(socket){
+    socket.emit('aaa', socket.id);
+});
+
+server.listen(port);
 
 console.log('Server running at http://127.0.0.1:' + port + '/');
