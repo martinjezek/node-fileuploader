@@ -7,8 +7,13 @@ var progressbarTemplate = Handlebars.compile($('#progressbarTemplate').html());
 
 var socket = io.connect();
 
-socket.on('aaa', function(data) {
-    console.log('foo', data);
+socket.on('ready', function(sid) {
+    $('#sid').val(sid);
+});
+
+socket.on('progress', function(percent) {
+    $progressbar.html(progressbarTemplate(percent));
+    console.log(percent);
 });
 
 $('form').on('submit', function() {
@@ -33,7 +38,7 @@ $('form').on('submit', function() {
                 $('#name').val('');
                 $('#file').val('');
             }
-            // $progressbar.removeClass('active');
+            $progressbar.removeClass('active');
         }
     });
     return false;
