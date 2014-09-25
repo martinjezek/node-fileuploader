@@ -1,3 +1,16 @@
+<a name="0.0.3"></a>
+### 0.0.3 (2014-09-25)
+
+
+#### Features
+
+* add a few animation fluff #5 ([b7cf0ccd](git@github.com:martinjezek/node-fileuploader/commit/b7cf0ccd407c3307d29c4470ea1861e9474b00cd))
+* add upload submit event locker + visual effects #5 ([8f4215b4](git@github.com:martinjezek/node-fileuploader/commit/8f4215b4dadb4df271fd355963e8746d3dc5381e))
+* add progress bar synced via Socket.io #5 ([fac22b8b](git@github.com:martinjezek/node-fileuploader/commit/fac22b8bf382542cc9cf4df50719d6a20ad061ea))
+* implement Socket.io library #5 ([512faaa0](git@github.com:martinjezek/node-fileuploader/commit/512faaa0237e754f70fd5cf5c1e82eaecfc7be05))
+* add progress bar and socket.io libraries #5 ([2efdd9dd](git@github.com:martinjezek/node-fileuploader/commit/2efdd9ddc18aa91c6586fe5ce8a0c5aa7083e8bb))
+
+
 <a name="0.0.2"></a>
 ### 0.0.2 (2014-09-23)
 
