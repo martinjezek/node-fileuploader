@@ -4,13 +4,22 @@ var formidable = require('formidable');
 var socketio = require('socket.io');
 var fileserver = require('./fileserver.js');
 
-var upload = function(req, res, callback) {
+var upload = function(req, res, io, callback) {
     if (isFormData(req)) {
         var form = new formidable.IncomingForm();
+        var sid = null;
+
+        form.on('field', function(name, value) {
+            if (name === 'sid') {
+                sid = value;
+            }
+        });
 
         form.on('progress', function(bytesRecieved, bytesExpected) {
             var percent = Math.floor(bytesRecieved / bytesExpected * 100);
-            console.log(percent);
+            if (sid !== null) {
+                io.sockets.to(sid).emit('progress', percent);
+            }
         });
 
         form.parse(req, function(err, fields, files) {

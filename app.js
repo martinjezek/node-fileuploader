@@ -14,7 +14,7 @@ var server = http.createServer(function (req, res) {
             fileserver.streamFile(req, res, root);
             break;
         case 'POST':
-            fileuploader.upload(req, res, function(fields, files) {
+            fileuploader.upload(req, res, io, function(fields, files) {
                 res.setHeader('Content-Type', 'application/json; charset="utf-8"');
                 if (files.file.size > 0) {
                     if (fields.name !== undefined && fields.name !== '') {
@@ -37,6 +37,14 @@ var server = http.createServer(function (req, res) {
             break;
     }
 
-}).listen(port);
+});
+
+var io = require('socket.io').listen(server);
+
+io.on('connection', function(socket){
+    socket.emit('ready', socket.id);
+});
+
+server.listen(port);
 
 console.log('Server running at http://127.0.0.1:' + port + '/');
